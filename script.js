@@ -11,11 +11,36 @@ canvas.height = window.innerHeight
 
 
 //////////////////////////////////////////
+// left = 37
+// up = 38
+// right = 39
+// down = 40
+
+let newZuck = new Zuckerberg()
+
+window.addEventListener("click", function(e){
+   console.log( e.keyCode)
+if(e.keyCode === 39){newZuck.zuckX == x+5} else if 
+(e.keyCode == 37){newZuck.zuckY == x-5} else {
+newZuck.zuckX == x && newZuck.zuckY == newZuck.zuckY
+}
+} );
+
+ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 
 
-ctx.fillRect(60, 80, canvas.width, canvas.height);
+let zuckX = canvas.width/2; //places mark in the middle
+let zuckY = canvas.height; //places mark at the bottom of the window 
 
 
 
+window.requestAnimationFrame(animate)
 
+function animate() {
+    console.log('yo');
+    draw()
+    action()
+}
+
+animate()
