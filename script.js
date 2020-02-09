@@ -43,16 +43,34 @@ let govY = 0;
 // ctx.drawImage(this.zuckie,this.sx,this.sy,this.sWidth, this.sHeight, this.x,this.y, this.width,this.height)
 //sx is the starting point on the image for x
 let newZuck = new Zuckerberg(zuckX,zuckY, 170, 80, 0,0,170,133)
-let newObstacle = new Obstacle(govX,govY, 170, 80, 0,0,170,250,"obstacle")
-let newData = new Data(govX-100,govY-15, 170, 80, 0,0,170,250,"data")
+let newObstacle = new Obstacle(govX,govY, 170, 80, 0,0,170,250)
+let newData = new Data(govX-100,govY-15, 170, 80, 0,0,170,250)
+
+function getRandomInt(max) {
+   return Math.floor(Math.random() * Math.floor(max));
+ }
 
 
+
+function generateItem() {
+      let num = getRandomInt(50);
+      console.log(num);
+      if(num % 2 == 0){
+         let randomData = new Data(getRandomInt(400),govY-15, 170, 80, 0,0,170,250) //this creates the new data object...give a random x position and everything else is the same
+      itemsArray.push(randomData)
+      } else {
+         let randomObstacle = new Obstacle(getRandomInt(400),govY, 170, 80, 0,0,170,250)
+         itemsArray.push(randomObstacle)
+      }
+    }
+
+    //how do you randomly come up with x position
 
 ///function that calls the methods to animate 
 
 function drawItems(){
    
-itemsArray.forEach(eachItem => console.log( eachItem.identifier));
+// itemsArray.forEach(eachItem => console.log( eachItem.identifier));
 itemsArray.forEach(eachItem => eachItem.drawObs());
 }
 
@@ -61,7 +79,7 @@ window.onload = () => {
 newZuck.draw();
 itemsArray.push(newObstacle)
 itemsArray.push(newData)
-
+generateItem();
 
 
 
@@ -80,6 +98,8 @@ ctx.fillStyle = "#f7f7f7";
 ctx.fillRect(0,0,canvas.width,canvas.height)
 newZuck.draw()
 drawItems()
+newZuck.detectCollision()
+
 
 
 

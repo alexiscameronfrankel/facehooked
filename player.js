@@ -32,16 +32,29 @@ class Zuckerberg {
           this.i = 0;
       }
     }
+//array1.forEach(element => console.log(element));
 
 
-  // detectCollision(){
-  //   if()
 
-  // }
+detectCollision(){
+  itemsArray.forEach(item => {
+        if(this.x > item.x && this.x < item.x+item.width && this.y > item.y && this.y < item.y+item.height){
+          this.respondCollision(item);
+        }
+      }) 
+  
+    }
 
-  // respondCollision(){
+respondCollision(item){
+      if(item.identifier === "obstacle" ){
+        confirm("YOU SUCK AT THIS GAME")
+      } else {
+        score++;
+      }
+    
+     }
 
-  // }
+
 
 
       draw(){
