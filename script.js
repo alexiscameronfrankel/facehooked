@@ -6,7 +6,7 @@ let windowWidth = window.innerWidth
 let windowHeight = window.innerHeight
 
 
-//code below actually sets the dimmensions to the full height and width of the window
+//code below actually sets the dimmensions //
 canvas.width = 600
 canvas.height = 800
 ctx.fillStyle = "#f7f7f7";
@@ -18,12 +18,26 @@ let itemsArray = [];
 
 
 
+//this is the code that sets up the boundaries of the canvas//
+
+
+function isOffBoard(){
+   if(newZuck.x < 0){ //mark has hit left side
+     newZuck.x = 10
+   }
+   if(newZuck.x > canvas.width - newZuck.width){
+     newZuck.x = canvas.width - newZuck.width 
+   }
+ }
+ 
+
+//this associates the keys with movement//
 
 
 window.addEventListener("keydown", function(e){
    console.log( e.keyCode)
-if(e.keyCode === 39){newZuck.x +=5} else if
-(e.keyCode == 37){newZuck.x -=5} 
+if(e.keyCode === 39){newZuck.x +=8} else if
+(e.keyCode == 37){newZuck.x -=8} 
 }
  );
 
@@ -92,13 +106,17 @@ generateItem();
 
  window.requestAnimationFrame(animate) //draws the first image
 
+
+ //below is how everything is animated...draws over and over 
+
 function animate() {
 ctx.clearRect(0,0, canvas.width,canvas.height);
 ctx.fillStyle = "#f7f7f7";
 ctx.fillRect(0,0,canvas.width,canvas.height)
 newZuck.draw()
 drawItems()
-newZuck.detectCollision()
+// newZuck.detectCollision()
+isOffBoard()
 
 
 

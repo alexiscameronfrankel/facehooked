@@ -45,14 +45,14 @@ detectCollision(){
   
     }
 
-respondCollision(item){
-      if(item.identifier === "obstacle" ){
-        confirm("YOU SUCK AT THIS GAME")
-      } else {
-        score++;
-      }
+// respondCollision(item){
+//       if(item.identifier === "obstacle" ){
+//         confirm("YOU SUCK AT THIS GAME")
+//       } else {
+//         score++;
+//       }
     
-     }
+//      }
 
 
 
