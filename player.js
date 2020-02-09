@@ -45,14 +45,21 @@ detectCollision(){
   
     }
 
-// respondCollision(item){
-//       if(item.identifier === "obstacle" ){
-//         confirm("YOU SUCK AT THIS GAME")
-//       } else {
-//         score++;
-//       }
+respondCollision(item){
+
+
+
+      if(item.identifier === "obstacle" ){
+        console.log('lost game')
+        window.cancelAnimationFrame(frameId)
+
+      } else if (item.identifier === "data"){
+        let score = 0;
+        score += score;
+        console.log(score);
+      }
     
-//      }
+     }
 
 
 

@@ -24,6 +24,7 @@ function isOffBoard(){
    if(newZuck.x > canvas.width - newZuck.width){
      newZuck.x = canvas.width - newZuck.width 
    }
+ 
  }
  
 
@@ -50,8 +51,8 @@ let dataY = 0;
 // ctx.drawImage(this.zuckie,this.sx,this.sy,this.sWidth, this.sHeight, this.x,this.y, this.width,this.height)
 //sx is the starting point on the image for x
 let newZuck = new Zuckerberg(zuckX,zuckY, 170, 80, 0,0,170,133)
-let newObstacle = new Obstacle(govX,govY, 170, 80, 0,0,170,250)
-let newData = new Data(dataX-2,dataY-2, 170, 80, 0,0,170,250)
+let newObstacle = new Obstacle(govX,170, 80, 0,0,170,250)
+let newData = new Data(dataX-2,170, 80, 0,0,170,250)
 
 //function to start getting me a random number 
 function getRandomInt(max) {
@@ -71,11 +72,12 @@ function generateItem() {
       let num = getRandomInt(50); //this uses the function to actually get a random number
       console.log(num);
       if(num % 2 == 0){
-         let randomData = new Data(Math.random()*canvas.width,dataY-40, 170, 80, 0,0,170,250) //this creates the new data object...give a random x position and everything else is the same
+         let randomData = new Data(Math.random()*canvas.width,dataY-40, 170, 80, 0,0,500,800)
+        //this creates the new data object...give a random x position and everything else is the same
       itemsArray.push(randomData);
       console.log('hey')
       } else {
-         let randomObstacle = new Obstacle(Math.random()*canvas.width,govY, 170, 80, 0,0,170,250)
+         let randomObstacle = new Obstacle(Math.random()*canvas.width,govY, 170, 80, 0,0,500,600)
          itemsArray.push(randomObstacle)
          console.log('hi')
       }
@@ -123,7 +125,7 @@ ctx.fillStyle = "#f7f7f7";
 ctx.fillRect(0,0,canvas.width,canvas.height)
 newZuck.draw()
 drawItems()
-// newZuck.detectCollision()
+newZuck.detectCollision()
 isOffBoard()
 
 
