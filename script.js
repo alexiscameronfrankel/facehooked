@@ -38,11 +38,6 @@ if(e.keyCode === 39){newZuck.x +=8} else if
  );
 
 
-
-
-
-
-
 let zuckX = canvas.width/2-66; //places mark in the middle
 let zuckY = canvas.height - 170; //places mark at the bottom of the window 
 let govX = canvas.width/2; 
@@ -58,6 +53,7 @@ let newZuck = new Zuckerberg(zuckX,zuckY, 170, 80, 0,0,170,133)
 let newObstacle = new Obstacle(govX,govY, 170, 80, 0,0,170,250)
 let newData = new Data(dataX-2,dataY-2, 170, 80, 0,0,170,250)
 
+//function to start getting me a random number 
 function getRandomInt(max) {
    return Math.floor(Math.random() * Math.floor(max));
  }
@@ -66,20 +62,22 @@ function getRandomInt(max) {
 
 //here's the code that gets ya multiple government icons and respective status//
 
-let itemsArray = [];
+let itemsArray = []; //keeps track of all of the items that have dropped 
 
 
 
 function generateItem() {
    setInterval(function(){
-      let num = 20;
+      let num = getRandomInt(50); //this uses the function to actually get a random number
       console.log(num);
       if(num % 2 == 0){
          let randomData = new Data(Math.random()*canvas.width,dataY-40, 170, 80, 0,0,170,250) //this creates the new data object...give a random x position and everything else is the same
-      itemsArray.push(randomData)
+      itemsArray.push(randomData);
+      console.log('hey')
       } else {
          let randomObstacle = new Obstacle(Math.random()*canvas.width,govY, 170, 80, 0,0,170,250)
          itemsArray.push(randomObstacle)
+         console.log('hi')
       }
       console.log(itemsArray)
    }, 1000)
