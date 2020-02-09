@@ -72,12 +72,12 @@ function generateItem() {
       let num = getRandomInt(50); //this uses the function to actually get a random number
       console.log(num);
       if(num % 2 == 0){
-         let randomData = new Data(Math.random()*canvas.width,dataY-40, 170, 80, 0,0,500,800)
+         let randomData = new Data(Math.random()*canvas.width,dataY-40, 100, 100, 0,0,800,600)
         //this creates the new data object...give a random x position and everything else is the same
       itemsArray.push(randomData);
       console.log('hey')
       } else {
-         let randomObstacle = new Obstacle(Math.random()*canvas.width,govY, 170, 80, 0,0,500,600)
+         let randomObstacle = new Obstacle(Math.random()*canvas.width,govY, 100, 100, 0,0,800,600)
          itemsArray.push(randomObstacle)
          console.log('hi')
       }
