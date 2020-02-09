@@ -12,10 +12,6 @@ canvas.height = 800
 ctx.fillStyle = "#f7f7f7";
 ctx.fillRect(0,0,canvas.width,canvas.height)
 
-//here's the code that gets ya multiple government icons and respective status//
-
-let itemsArray = [];
-
 
 
 //this is the code that sets up the boundaries of the canvas//
@@ -51,6 +47,8 @@ let zuckX = canvas.width/2-66; //places mark in the middle
 let zuckY = canvas.height - 170; //places mark at the bottom of the window 
 let govX = canvas.width/2; 
 let govY = 0;
+let dataX = canvas.width/2; 
+let dataY = 0;
 //drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
 // let zuckie = new Image();
 // zuckie.src = "./images/zuckerergsprite.png"
@@ -58,7 +56,7 @@ let govY = 0;
 //sx is the starting point on the image for x
 let newZuck = new Zuckerberg(zuckX,zuckY, 170, 80, 0,0,170,133)
 let newObstacle = new Obstacle(govX,govY, 170, 80, 0,0,170,250)
-let newData = new Data(govX-100,govY-15, 170, 80, 0,0,170,250)
+let newData = new Data(dataX-2,dataY-2, 170, 80, 0,0,170,250)
 
 function getRandomInt(max) {
    return Math.floor(Math.random() * Math.floor(max));
@@ -66,21 +64,33 @@ function getRandomInt(max) {
 
 
 
+//here's the code that gets ya multiple government icons and respective status//
+
+let itemsArray = [];
+
+
+
 function generateItem() {
-      let num = getRandomInt(50);
+   setInterval(function(){
+      let num = 20;
       console.log(num);
       if(num % 2 == 0){
-         let randomData = new Data(getRandomInt(400),govY-15, 170, 80, 0,0,170,250) //this creates the new data object...give a random x position and everything else is the same
+         let randomData = new Data(Math.random()*canvas.width,dataY-40, 170, 80, 0,0,170,250) //this creates the new data object...give a random x position and everything else is the same
       itemsArray.push(randomData)
       } else {
-         let randomObstacle = new Obstacle(getRandomInt(400),govY, 170, 80, 0,0,170,250)
+         let randomObstacle = new Obstacle(Math.random()*canvas.width,govY, 170, 80, 0,0,170,250)
          itemsArray.push(randomObstacle)
       }
+      console.log(itemsArray)
+   }, 1000)
     }
+
+    
 
     //how do you randomly come up with x position
 
-///function that calls the methods to animate 
+
+
 
 function drawItems(){
    

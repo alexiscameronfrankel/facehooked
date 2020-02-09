@@ -7,8 +7,6 @@ class Obstacle {
       this.sHeight = sHeight;
       this.gov = new Image();
       this.gov.src = "/images/governmentfine.png"
-      this.points = new Image();
-      // this.points.src = "/images/governmentfine.png"
       this.height = height; //height of the image
       this.width = width; //width of the image
       this.x=govX;
@@ -16,8 +14,7 @@ class Obstacle {
       this.identifier = "obstacle";
     }
 
-    fall(){// animate will animate zuckerberg with you...when true frame 1...when false 
-      // make open equal true on first declare
+    fall(){
       this.y += 3; }
     
 
@@ -25,14 +22,7 @@ class Obstacle {
       drawObs(){
         this.fall();
         ctx.drawImage(this.gov,this.sx,this.sy,this.sWidth, this.sHeight, this.x,this.y, this.width,this.height)
+
       }
-// //just added the action()
-//      action(){
-//       this.mouthClose = move,
-//       this.points = points,
-//       this.die = die, 
-//       this.collide = collide } 
-//      }
-    
       
 }
