@@ -22,7 +22,10 @@ class Obstacle {
       drawObs(){
         this.fall();
         ctx.drawImage(this.gov,this.sx,this.sy,this.sWidth, this.sHeight, this.x,this.y, this.width,this.height)
-
+        ctx.strokeStyle = '#f00'; // some color/style
+ctx.lineWidth = 2;     // thickness
+ctx.strokeRect(this.x, this.y, this.width, this.height)
+      
       }
       
 }

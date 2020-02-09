@@ -13,6 +13,7 @@ class Zuckerberg {
       this.x=zuckX;
       this.y=zuckY;// u put in the animate function so it loops through it 
       this.i = 0;
+      this.score = 0;
     }
       
       
@@ -38,12 +39,28 @@ class Zuckerberg {
 
 detectCollision(){
   itemsArray.forEach(item => {
-        if(this.x > item.x && this.x < item.x+item.width && this.y > item.y && this.y < item.y+item.height){
-          this.respondCollision(item);
-        }
-      }) 
+        // if(this.x > item.x && this.x < item.x+item.width && this.y > item.y && this.y < item.y+item.height){
+        //   this.respondCollision(item);
+
+
+        if (this.x < item.x + item.width &&
+          this.x + this.width > item.x &&
+          this.y < item.y + item.height &&
+          this.y + this.height > item.y){this.respondCollision(item);}
+        
+        }) 
+      
+}
   
-    }
+destroyItem(item){
+
+let itemIndex = itemsArray.indexOf(item);
+if (itemIndex !== -1) {
+    itemsArray.splice(itemIndex, 1)
+  }
+}
+
+    
 
 respondCollision(item){
 
@@ -51,14 +68,14 @@ respondCollision(item){
 
       if(item.identifier === "obstacle" ){
         console.log('lost game')
-        window.cancelAnimationFrame(frameId)
+      
 
       } else if (item.identifier === "data"){
-        let score = 0;
-        score += score;
-        console.log(score);
+        this.score++;
+        console.log(this.score);
       }
-    
+
+      this.destroyItem(item)
      }
 
 
@@ -68,6 +85,9 @@ respondCollision(item){
         this.update()
         ctx.drawImage(this.zuckie,this.sx,this.sy,this.sWidth, this.sHeight, 
             this.x,this.y, this.width,this.height)
+            ctx.strokeStyle = '#00F'; // some color/style
+            ctx.lineWidth = 2;     // thickness
+            ctx.strokeRect(this.x, this.y, this.width, this.height)
       }
 // //just added the action()
 //      action(){

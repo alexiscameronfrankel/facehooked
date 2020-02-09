@@ -51,8 +51,8 @@ let dataY = 0;
 // ctx.drawImage(this.zuckie,this.sx,this.sy,this.sWidth, this.sHeight, this.x,this.y, this.width,this.height)
 //sx is the starting point on the image for x
 let newZuck = new Zuckerberg(zuckX,zuckY, 170, 80, 0,0,170,133)
-let newObstacle = new Obstacle(govX,170, 80, 0,0,170,250)
-let newData = new Data(dataX-2,170, 80, 0,0,170,250)
+// let newObstacle = new Obstacle(govX,170, 80, 0,0,170,250)
+// let newData = new Data(dataX-2,170, 80, 0,0,170,250)
 
 //function to start getting me a random number 
 function getRandomInt(max) {
@@ -101,8 +101,8 @@ itemsArray.forEach(eachItem => eachItem.drawObs());
 
 window.onload = () => {
 newZuck.draw();
-itemsArray.push(newObstacle)
-itemsArray.push(newData)
+// itemsArray.push(RObstacle)
+// itemsArray.push(newData)
 generateItem();
 
 
