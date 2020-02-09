@@ -1,12 +1,12 @@
 
-class Obstacle {
+class Data {
     constructor(govX, govY, height, width, sx, sy, sWidth, sHeight, identifier) {
       this.sx = sx;
       this.sy = sy;
       this.sWidth = sWidth;
       this.sHeight = sHeight;
       this.gov = new Image();
-      this.gov.src = "/images/governmentfine.png"
+      this.gov.src = "/images/booty.png"
       this.points = new Image();
       // this.points.src = "/images/governmentfine.png"
       this.height = height; //height of the image

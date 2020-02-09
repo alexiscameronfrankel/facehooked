@@ -34,14 +34,14 @@ class Zuckerberg {
     }
 
 
-  detectCollision(){
-    if()
+  // detectCollision(){
+  //   if()
 
-  }
+  // }
 
-  respondCollision(){
+  // respondCollision(){
 
-  }
+  // }
 
 
       draw(){
