@@ -14,9 +14,6 @@ ctx.fillRect(0,0,canvas.width,canvas.height)
 
 
 
-this 
-
-
 window.addEventListener("keydown", function(e){
    console.log( e.keyCode)
 if(e.keyCode === 39){newZuck.x +=5} else if
@@ -26,17 +23,22 @@ if(e.keyCode === 39){newZuck.x +=5} else if
 
 
 
-// ctx.fillRect(0, 0, canvas.width, canvas.height);
+
 
 
 
 let zuckX = canvas.width/2-66; //places mark in the middle
 let zuckY = canvas.height - 170; //places mark at the bottom of the window 
+let govX = canvas.width/2; 
+let govY = 0;
 //drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
 // let zuckie = new Image();
 // zuckie.src = "./images/zuckerergsprite.png"
-// ctx.drawImage(this.zuckie,this.sx,this.sy,this.sWidth, this.sHeight, this.x,this.y, this.height,this.cutwidth)
+// ctx.drawImage(this.zuckie,this.sx,this.sy,this.sWidth, this.sHeight, this.x,this.y, this.width,this.height)
+//sx is the starting point on the image for x
 let newZuck = new Zuckerberg(zuckX,zuckY, 170, 80, 0,0,170,133)
+let newObstacle = new Obstacle(govX,govY, 170, 80, 0,0,170,250)
+
 
 
 window.onload = () => {
@@ -44,8 +46,13 @@ newZuck.draw();
 // newZuck.sx = 170;
 // newZuck.width += 133;
 // newZuck.draw();
+newObstacle.drawObs();
 
 }
+
+
+
+
 
  window.requestAnimationFrame(animate) //draws the first image
 
@@ -54,6 +61,7 @@ ctx.clearRect(0,0, canvas.width,canvas.height);
 ctx.fillStyle = "#f7f7f7";
 ctx.fillRect(0,0,canvas.width,canvas.height)
 newZuck.draw()
+newObstacle.drawObs()
 // //     // newZuck.action()
 window.requestAnimationFrame(animate);
 }
