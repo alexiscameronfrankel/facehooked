@@ -9,7 +9,7 @@ let windowHeight = window.innerHeight
 //code below actually sets the dimmensions //
 canvas.width = 600
 canvas.height = 800
-ctx.fillStyle = "#f7f7f7";
+ctx.fillStyle = "#eaebee";
 ctx.fillRect(0,0,canvas.width,canvas.height)
 
 
@@ -18,12 +18,29 @@ ctx.fillRect(0,0,canvas.width,canvas.height)
 
 
 function isOffBoard(){
+   //checking for player position//
    if(newZuck.x < 0){ //mark has hit left side
      newZuck.x = 10
    }
    if(newZuck.x > canvas.width - newZuck.width){
      newZuck.x = canvas.width - newZuck.width 
    }
+   //checking for obstacle position//
+   itemsArray.forEach(eachItem =>{
+  
+       if(eachItem.x > canvas.width - eachItem.width || eachItem.x < 0) {//detection
+         console.log(`${eachItem.identifier} is out of bounds`)
+         destroyItem(eachItem); //response to being off the board
+       }
+       if(eachItem.y > canvas.height) {//detection
+         console.log(`${eachItem.identifier} is out of bounds on the bottom of the canvas :)`)
+         destroyItem(eachItem); //response to being off the board
+       }
+   } )
+
+   // - eachItem.height
+   
+   //checking for data position//
  
  }
  
@@ -33,8 +50,8 @@ function isOffBoard(){
 
 window.addEventListener("keydown", function(e){
    console.log( e.keyCode)
-if(e.keyCode === 39){newZuck.x +=8} else if
-(e.keyCode == 37){newZuck.x -=8} 
+if(e.keyCode === 39){newZuck.x +=15} else if
+(e.keyCode == 37){newZuck.x -=15} 
 }
  );
 
@@ -54,6 +71,12 @@ let newZuck = new Zuckerberg(zuckX,zuckY, 170, 80, 0,0,170,133)
 // let newObstacle = new Obstacle(govX,170, 80, 0,0,170,250)
 // let newData = new Data(dataX-2,170, 80, 0,0,170,250)
 
+
+//selects score 
+
+let frameId; 
+let scoreBoard = document.querySelector('#data-stolen')
+
 //function to start getting me a random number 
 function getRandomInt(max) {
    return Math.floor(Math.random() * Math.floor(max));
@@ -61,7 +84,7 @@ function getRandomInt(max) {
 
 
 
-//here's the code that gets ya multiple government icons and respective status//
+//here's the code that gets you multiple government icons and respective status//
 
 let itemsArray = []; //keeps track of all of the items that have dropped 
 
@@ -75,22 +98,28 @@ function generateItem() {
          let randomData = new Data(Math.random()*canvas.width,dataY-40, 100, 100, 0,0,800,600)
         //this creates the new data object...give a random x position and everything else is the same
       itemsArray.push(randomData);
-      console.log('hey')
+      console.log('data pushed into the array')
       } else {
          let randomObstacle = new Obstacle(Math.random()*canvas.width,govY, 100, 100, 0,0,800,600)
          itemsArray.push(randomObstacle)
-         console.log('hi')
+         console.log('obstacle pushed into the array')
       }
       console.log(itemsArray)
    }, 1000)
     }
 
-    
-
-    //how do you randomly come up with x position
+   
 
 
+//removes item from the board
 
+function destroyItem(item){
+console.log('now destroying the item')
+   let itemIndex = itemsArray.indexOf(item);
+   if (itemIndex !== -1) {
+       itemsArray.splice(itemIndex, 1)
+     }
+   }
 
 function drawItems(){
    
@@ -123,15 +152,10 @@ function animate() {
 ctx.clearRect(0,0, canvas.width,canvas.height);
 ctx.fillStyle = "#f7f7f7";
 ctx.fillRect(0,0,canvas.width,canvas.height)
+scoreBoard.innerHTML = newZuck.score; //updates score
 newZuck.draw()
 drawItems()
 newZuck.detectCollision()
 isOffBoard()
-
-
-
-
-
-// //     // newZuck.action()
 window.requestAnimationFrame(animate);
 }

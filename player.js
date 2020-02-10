@@ -52,13 +52,7 @@ detectCollision(){
       
 }
   
-destroyItem(item){
 
-let itemIndex = itemsArray.indexOf(item);
-if (itemIndex !== -1) {
-    itemsArray.splice(itemIndex, 1)
-  }
-}
 
     
 
@@ -73,9 +67,10 @@ respondCollision(item){
       } else if (item.identifier === "data"){
         this.score++;
         console.log(this.score);
+       
       }
 
-      this.destroyItem(item)
+        destroyItem(item)
      }
 
 
