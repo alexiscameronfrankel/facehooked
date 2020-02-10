@@ -143,7 +143,22 @@ generateItem();
 
 }
 
- window.requestAnimationFrame(animate) //draws the first image
+// //this should restart the game when restart button is clicked
+
+// function restart() {
+//    console.log('restart me')
+//    canvas.stop();
+//    canvas.clear();
+//    // startGame();
+// }
+
+// //draws the first image
+
+
+ frameId = window.requestAnimationFrame(animate) 
+
+
+
 
 
  //below is how everything is animated...draws over and over 
@@ -158,4 +173,5 @@ drawItems()
 newZuck.detectCollision()
 isOffBoard()
 window.requestAnimationFrame(animate);
+
 }

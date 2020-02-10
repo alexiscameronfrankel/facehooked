@@ -1,5 +1,5 @@
 html, body {
-    background: url(/images/facehookedbackgroud.png) no-repeat center center fixed;;
+    background: url(/images/goodbackground.png) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -21,6 +21,9 @@ html, body {
     right: 0;
 }
 
-h3 {
+h1 {
     font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    margin-top:65px;
 }

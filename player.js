@@ -1,4 +1,4 @@
-//classes use methods 
+
 
 class Zuckerberg {
     constructor(zuckX, zuckY, height, width, sx, sy, sWidth, sHeight) {
@@ -33,20 +33,17 @@ class Zuckerberg {
           this.i = 0;
       }
     }
-//array1.forEach(element => console.log(element));
+
 
 
 
 detectCollision(){
   itemsArray.forEach(item => {
-        // if(this.x > item.x && this.x < item.x+item.width && this.y > item.y && this.y < item.y+item.height){
-        //   this.respondCollision(item);
-
 
         if (this.x < item.x + item.width &&
           this.x + this.width > item.x &&
           this.y < item.y + item.height &&
-          this.y + this.height > item.y){this.respondCollision(item);}
+          this.y + this.height > item.y){this.respondCollision(item); }
         
         }) 
       
@@ -54,14 +51,25 @@ detectCollision(){
   
 
 
-    
 
 respondCollision(item){
 
 
 
       if(item.identifier === "obstacle" ){
-        console.log('lost game')
+
+
+//below is unstyled alert box to return to the main menu
+        console.log('lost game');
+        let lostBox = confirm(`GAME OVER! YOUR SCORE IS ${this.score}`);
+        if (lostBox == true) {
+          window.location.href = "menu.html";
+        } else {
+          window.location.href = "menu.html";
+        }
+        
+       
+
       
 
       } else if (item.identifier === "data"){
@@ -84,13 +92,6 @@ respondCollision(item){
             ctx.lineWidth = 2;     // thickness
             ctx.strokeRect(this.x, this.y, this.width, this.height)
       }
-// //just added the action()
-//      action(){
-//       this.mouthClose = move,
-//       this.points = points,
-//       this.die = die, 
-//       this.collide = collide } 
-//      }
     
       
 }
